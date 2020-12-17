@@ -47,32 +47,32 @@ def login_jobcan():
     browser.get(url)
 def jobcan_dakoku():
     #crick 
-    #push_button = browser.find_element_by_id('adit-button-push')
-    #push_button.click()
+    push_button = browser.find_element_by_id('adit-button-push')
+    push_button.click()
     #print(u"出退勤ボタン押しました。")
     browser.implicitly_wait(2)
 def jobcan_syukinbo():
-    syukibo_page = browser.find_element_by_xpath('//*[@id="header"]/div[2]/div/ul/li[1]/a')
+    syukibo_page = browser.find_element_by_xpath('//*[@id="sidemenu"]/div[2]/div/a')
     syukibo_page.click()
     #print(u"出勤簿")
 def jobcan_syusei():
-    dakokusyusei_page = browser.find_element_by_xpath('//*[@id="menu_adit_img"]')
+    dakokusyusei_page = browser.find_element_by_xpath('//*[@id="menu_adit_img"]/svg[2]')
     dakokusyusei_page.click()
-    syusei_page = browser.find_element_by_xpath('//*[@id="menu_adit"]/table/tbody/tr[1]/td/a')
+    syusei_page = browser.find_element_by_xpath('//*[@id="menu_adit"]/a[1]')
     syusei_page.click()
     #print(u"打刻修正")
 def jobcan_kyuka():
-    sinsei_page = browser.find_element_by_xpath('//*[@id="menu_order_img"]')
-    sinsei_page.click()
-    kyuka_page = browser.find_element_by_xpath('//*[@id="menu_order"]/table/tbody/tr[1]/td/a')
+    #sinsei_page = browser.find_element_by_xpath('//*[@id="menu_order_img"]')
+    #sinsei_page.click()
+    kyuka_page = browser.find_element_by_xpath('//*[@id="menu_order"]/a[1]')
     kyuka_page.click()
     #print(u"休暇申請")
 def jobcan_status():
     time.sleep(2)
     updateTime = datetime.datetime.now()
     status = browser.find_element_by_id('working_status')
-    dakoku_more = browser.find_element_by_xpath('//*[@id="top_info_area"]/table/tbody/tr[1]/td/a')
-    dakoku_error = browser.find_element_by_xpath('//*[@id="top_info_area"]/table/tbody/tr[2]/td/a')
+    dakoku_more = browser.find_element_by_xpath('//*[@id="top_info_area"]/div[2]/table/tbody/tr[1]/td/a')
+    dakoku_error = browser.find_element_by_xpath('//*[@id="top_info_area"]/div[2]/table/tbody/tr[2]/td/a')
     updateTime = updateTime.strftime('%H:%M:%S')
     status = status.text
     dakoku_more = dakoku_more.text
@@ -105,13 +105,13 @@ def jobcan_html_ui():
         brouser_open()
         login_jobcan()
     st.text('---------------------------------')
-    if st.button('打刻修正'):
-        brouser_open()
-        login_jobcan()
-        jobcan_syusei()
-    if st.button('休暇申請'):
-        brouser_open()
-        login_jobcan()
-        jobcan_kyuka()
+    #if st.button('打刻修正'):
+    #    brouser_open()
+    #    login_jobcan()
+    #    jobcan_syusei()
+    #if st.button('休暇申請'):
+    #    brouser_open()
+    #    login_jobcan()
+    #    jobcan_kyuka()
 
 jobcan_html_ui()
